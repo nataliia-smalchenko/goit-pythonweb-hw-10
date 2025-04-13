@@ -14,17 +14,12 @@ conf = ConnectionConfig(
     MAIL_PORT=settings.MAIL_PORT,
     MAIL_SERVER=settings.MAIL_SERVER,
     MAIL_FROM_NAME=settings.MAIL_FROM_NAME,
-    # MAIL_STARTTLS=settings.MAIL_STARTTLS,
-    # MAIL_SSL_TLS=settings.MAIL_SSL_TLS,
-    # USE_CREDENTIALS=settings.USE_CREDENTIALS,
-    # VALIDATE_CERTS=settings.VALIDATE_CERTS,
-    MAIL_STARTTLS=False,
-    MAIL_SSL_TLS=True,
-    USE_CREDENTIALS=True,
-    VALIDATE_CERTS=True,
+    MAIL_STARTTLS=settings.MAIL_STARTTLS,
+    MAIL_SSL_TLS=settings.MAIL_SSL_TLS,
+    USE_CREDENTIALS=settings.USE_CREDENTIALS,
+    VALIDATE_CERTS=settings.VALIDATE_CERTS,
     TEMPLATE_FOLDER=Path(__file__).parent / "templates",
 )
-print(conf)
 
 
 async def send_email(email: EmailStr, username: str, host: str):

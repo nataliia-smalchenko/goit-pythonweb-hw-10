@@ -30,7 +30,6 @@ class UserRepository(BaseRepository):
     async def create_user(
         self, user_data: UserCreate, hashed_password: str, avatar: str
     ) -> User:
-        logger.info(hashed_password)
         user = User(
             **user_data.model_dump(exclude_unset=True, exclude={"password"}),
             hashed_password=hashed_password,

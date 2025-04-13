@@ -59,7 +59,10 @@ async def confirmed_email(
     return {"message": "Електронну пошту підтверджено"}
 
 
-@router.post("/request_email")
+@router.post(
+    "/request_email",
+    status_code=status.HTTP_201_CREATED,
+)
 async def request_email(
     body: RequestEmail,
     background_tasks: BackgroundTasks,

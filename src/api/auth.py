@@ -26,7 +26,11 @@ def get_auth_service(db: AsyncSession = Depends(get_db)):
     return AuthService(db)
 
 
-@router.post("/register", response_model=UserResponse)
+@router.post(
+    "/register",
+    response_model=UserResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 async def register(
     user_data: UserCreate,
     background_tasks: BackgroundTasks,
@@ -40,7 +44,11 @@ async def register(
     return user
 
 
-@router.post("/login", response_model=TokenResponse)
+@router.post(
+    "/login",
+    response_model=TokenResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 async def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
     request: Request = None,
@@ -58,7 +66,11 @@ async def login(
     )
 
 
-@router.post("/refresh", response_model=TokenResponse)
+@router.post(
+    "/refresh",
+    response_model=TokenResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 async def refresh(
     refresh_token: RefreshTokenRequest,
     request: Request = None,
